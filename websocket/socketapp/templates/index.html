@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang=”en”>
+<head>
+<meta charset=”UTF-8″>
+<title>Учебники по каналу Django</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+
+<center>
+<h1 style='color:blue' id ='msg'>{{ text }}</h1>
+
+</center>
+<script>
+var socket = new WebSocket('ws://localhost:8000/msg/');
+socket.onmessage = function(event) {
+
+    var data = JSON.parse(event.data);
+    console.log(data);
+    document.querySelector('#msg').innerText = data.timeValue;
+}
+
+</script>
+</body>
+
+</html>
